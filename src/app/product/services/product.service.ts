@@ -19,11 +19,11 @@ export class ProductService {
     return this.http.get('https://jsonplaceholder.typicode.com/photos');
   }
 
-  getProduct(id): Observable<any> {
+  getProduct(id: string): Observable<any> {
     return this.http.get('https://jsonplaceholder.typicode.com/photos/' + id);
   }
 
-  setCounter(id) {
+  setCounter(id: any) {
     id === null ? (this.counter = 0) : (this.counter = this.counter + 1);
     this.getProduct(id).subscribe((data) => {
       this.products.push(data);
