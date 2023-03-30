@@ -1,4 +1,4 @@
-import { Component, Inject, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ProductService } from '../services/product.service';
 import { FadedFullScreenLoaderService } from '../services/faded-full-screen-loader.service';
@@ -8,8 +8,6 @@ import { FadedFullScreenLoaderService } from '../services/faded-full-screen-load
   templateUrl: './shop-product.component.html',
   styleUrls: ['./shop-product.component.scss']
 })
-
-@Inject
 export class ShopProductComponent implements OnInit {
   id: number | any;
   productData: any;
@@ -19,7 +17,7 @@ export class ShopProductComponent implements OnInit {
 
   ngOnInit(): void {
     this._fadedLoadedService.setLoadingScreenState(true);
-    this.id = +this._activateService.snapshot.paramMap.get('id');
+    this.id = this._activateService.snapshot.paramMap.get('id');
     this._getProduct();
   }
 
